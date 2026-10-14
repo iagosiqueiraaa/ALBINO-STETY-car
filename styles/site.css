@@ -1,0 +1,103 @@
+/* Entrada do Tailwind. As @font-face das fontes locais são coladas antes disto pelo build. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Ícones do Font Awesome viram <svg class="ico"> no build (scripts/build.mjs) */
+    .ico {
+        display: inline-block;
+        height: 1em;
+        width: auto;
+        overflow: visible;
+        vertical-align: -0.125em;
+        fill: currentColor;
+        flex-shrink: 0;
+    }
+
+    /* Textura fibra de carbono */
+    .carbon-bg {
+        background-color: #08090c;
+        background-image:
+            linear-gradient(45deg, #0e1015 25%, transparent 25%),
+            linear-gradient(-45deg, #0e1015 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #0e1015 75%),
+            linear-gradient(-45deg, transparent 75%, #0e1015 75%);
+        background-size: 14px 14px;
+        background-position: 0 0, 0 7px, 7px -7px, -7px 0px;
+    }
+
+    .racing-glow-red {
+        text-shadow: 0 0 16px rgba(229, 9, 20, 0.65);
+    }
+
+    .border-glow-red {
+        border: 1px solid rgba(229, 9, 20, 0.35);
+        transition: all 0.3s ease;
+    }
+
+    .border-glow-red:hover {
+        border-color: rgba(229, 9, 20, 0.9);
+        box-shadow: 0 0 25px rgba(229, 9, 20, 0.35);
+    }
+
+    .glass-dark {
+        background: rgba(12, 14, 18, 0.82);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Brilhos de fundo: gradiente radial no lugar de div com filter: blur(130px), que custa caro pra pintar no celular */
+    .glow-red {
+        background: radial-gradient(closest-side, rgba(184, 5, 14, 0.2), rgba(184, 5, 14, 0.08) 55%, transparent);
+    }
+
+    .glow-gold {
+        background: radial-gradient(closest-side, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.04) 55%, transparent);
+    }
+
+    .glow-card {
+        background: radial-gradient(closest-side, rgba(184, 5, 14, 0.15), transparent);
+    }
+
+    /* Comparador antes e depois: a camada "antes" é recortada até --pos */
+    .comparison-wrapper {
+        position: relative;
+        overflow: hidden;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: pan-y;
+        cursor: ew-resize;
+    }
+
+    .comparison-wrapper img {
+        -webkit-user-drag: none;
+    }
+
+    #compare-before-layer {
+        clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0);
+    }
+
+    #compare-handle {
+        left: var(--pos, 50%);
+    }
+
+    #compare-range:focus-visible ~ #compare-handle .knob {
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.75);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #060709;
+}
+::-webkit-scrollbar-thumb {
+    background: #252a36;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #e50914;
+}

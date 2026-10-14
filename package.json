@@ -1,0 +1,24 @@
+{
+  "name": "albino-custom-detail",
+  "private": true,
+  "type": "module",
+  "browserslist": [
+    "defaults",
+    "iOS >= 15",
+    "Safari >= 15"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs"
+  },
+  "devDependencies": {
+    "@fontsource-variable/montserrat": "5.3.0",
+    "@fontsource-variable/orbitron": "5.3.0",
+    "@fontsource-variable/teko": "5.3.0",
+    "@fortawesome/fontawesome-free": "6.5.1",
+    "autoprefixer": "10.6.1",
+    "cssnano": "7.1.9",
+    "postcss": "8.5.30",
+    "tailwindcss": "3.4.19"
+  }
+}

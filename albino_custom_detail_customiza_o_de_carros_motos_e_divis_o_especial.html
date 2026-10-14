@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albino Custom Detail | Customização de Carros e Motos em Inhumas - GO</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Orbitron:wght@500;700;900&family=Teko:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        redcustom: {
+                            400: '#ff3b3b',
+                            500: '#e50914',
+                            600: '#b8050e',
+                            700: '#8b0000',
+                            glow: 'rgba(229, 9, 20, 0.45)'
+                        },
+                        goldcustom: {
+                            400: '#f5c842',
+                            500: '#d4af37',
+                            600: '#aa8214'
+                        },
+                        darkbase: {
+                            950: '#060709',
+                            900: '#0c0e12',
+                            850: '#13161c',
+                            800: '#1c202a',
+                            700: '#262c3a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                        racing: ['Teko', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Textura fibra de carbono */
+        .carbon-bg {
+            background-color: #08090c;
+            background-image: 
+                linear-gradient(45deg, #0e1015 25%, transparent 25%), 
+                linear-gradient(-45deg, #0e1015 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #0e1015 75%), 
+                linear-gradient(-45deg, transparent 75%, #0e1015 75%);
+            background-size: 14px 14px;
+            background-position: 0 0, 0 7px, 7px -7px, -7px 0px;
+        }
+
+        .racing-glow-red {
+            text-shadow: 0 0 16px rgba(229, 9, 20, 0.65);
+        }
+
+        .border-glow-red {
+            border: 1px solid rgba(229, 9, 20, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .border-glow-red:hover {
+            border-color: rgba(229, 9, 20, 0.9);
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.35);
+        }
+
+        .glass-dark {
+            background: rgba(12, 14, 18, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        /* Comparador Slider */
+        .comparison-wrapper {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060709;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #252a36;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e50914;
+        }
+    </style>
+</head>
+<body class="bg-darkbase-950 text-gray-200 font-sans antialiased selection:bg-redcustom-500 selection:text-white overflow-x-hidden">
+
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-nav">
+        <div class="glass-dark border-b border-white/10 py-3.5 px-4 sm:px-8">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <!-- Logotipo Albino Custom Detail -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-redcustom-500 to-darkbase-900 border border-redcustom-500/50 flex items-center justify-center text-white text-xl font-black shadow-lg shadow-redcustom-500/30 group-hover:scale-105 transition-all">
+                        <i class="fa-solid fa-gauge-high text-redcustom-400"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-tech font-black tracking-wider text-xl sm:text-2xl text-white">ALBINO</span>
+                            <span class="font-racing text-2xl sm:text-3xl text-redcustom-500 tracking-wider">CUSTOM DETAIL</span>
+                        </div>
+                        <span class="text-[10px] tracking-[0.28em] text-gray-400 font-semibold uppercase block">Inhumas - GO • Carros, Motos & Aero</span>
+                    </div>
+                </a>
+
+                <!-- Navegação Desktop -->
+                <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                    <a href="#carros-motos" class="text-gray-300 hover:text-redcustom-400 transition-colors">Carros & Motos</a>
+                    <a href="#couro-aero" class="text-gray-300 hover:text-redcustom-400 transition-colors">Couro & Aviação</a>
+                    <a href="#comparativo" class="text-gray-300 hover:text-redcustom-400 transition-colors">Antes & Depois</a>
+                    <a href="#galeria" class="text-gray-300 hover:text-redcustom-400 transition-colors">Projetos</a>
+                    <a href="#simulador" class="text-gray-300 hover:text-redcustom-400 transition-colors">Simulador</a>
+                    <a href="#oficina" class="text-gray-300 hover:text-redcustom-400 transition-colors">Oficina Inhumas</a>
+                </nav>
+
+                <!-- CTA Executivo -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="#simulador" class="px-5 py-2.5 rounded-xl text-xs font-black tracking-wider uppercase bg-gradient-to-r from-redcustom-600 via-redcustom-500 to-redcustom-600 text-white hover:shadow-[0_0_20px_rgba(229,9,20,0.5)] transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Montar Projeto</span>
+                    </a>
+                </div>
+
+                <!-- Botão Menu Mobile -->
+                <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl focus:outline-none p-2" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars-staggered" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-dark border-b border-redcustom-500/20 px-6 py-6 transition-all duration-300">
+            <div class="flex flex-col space-y-4 text-xs font-bold uppercase tracking-wider">
+                <a href="#carros-motos" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Customização: Carros & Motos</a>
+                <a href="#couro-aero" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Pintura em Couro & Aviação</a>
+                <a href="#comparativo" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Comparador Antes & Depois</a>
+                <a href="#galeria" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Portfólio de Projetos</a>
+                <a href="#simulador" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Simulador de Orçamento</a>
+                <a href="#oficina" class="mobile-link text-gray-200 hover:text-redcustom-400 py-1">Atelier Inhumas - GO</a>
+                <a href="https://wa.me/5562999990000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Albino%20Custom%20Detail%20em%20Inhumas." target="_blank" class="w-full text-center py-3 bg-redcustom-500 text-white font-black rounded-lg uppercase tracking-wider text-xs mt-2">
+                    <i class="fa-brands fa-whatsapp text-sm mr-1"></i> Chamar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION COM SPEED LIGHTS CANVAS -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden carbon-bg">
+        <!-- Canvas Rastro de Luz / Alta Velocidade -->
+        <canvas id="speed-canvas" class="absolute inset-0 w-full h-full pointer-events-auto opacity-70"></canvas>
+
+        <!-- Gradientes e Iluminação Atmosférica -->
+        <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/60 to-transparent pointer-events-none"></div>
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-redcustom-600/20 blur-[130px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-goldcustom-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto text-center px-4">
+            
+            <!-- Badge de Localização & Foco -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-darkbase-900/90 border border-redcustom-500/40 text-redcustom-400 text-xs sm:text-sm font-semibold tracking-wide mb-6 shadow-xl backdrop-blur-md">
+                <span class="w-2.5 h-2.5 rounded-full bg-redcustom-500 animate-ping"></span>
+                <span>Oficina Showroom em Inhumas • Eixo GO-070 / Goiânia</span>
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="text-3xl sm:text-6xl lg:text-7xl font-sans font-black text-white tracking-tight leading-[1.08] mb-6">
+                CUSTOMIZAÇÃO ARTESANAL DE <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-redcustom-400 via-redcustom-500 to-amber-400 racing-glow-red font-tech">CARROS & MOTOS</span>
+            </h1>
+
+            <!-- Subtítulo refinado -->
+            <p class="text-gray-300 text-base sm:text-xl max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Pinturas exclusivas Candy & Flake, vitrificação 9H, envelopamento de performance, restauração de bancos em couro e divisão especializada em aeronaves em Inhumas - GO.
+            </p>
+
+            <!-- Botões de Ação Rápida -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#simulador" class="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest bg-gradient-to-r from-redcustom-600 via-redcustom-500 to-redcustom-600 text-white hover:shadow-[0_0_35px_rgba(229,9,20,0.6)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-calculator text-sm"></i>
+                    <span>Simular Projeto de Customização</span>
+                </a>
+                <a href="#carros-motos" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest text-white glass-dark border border-white/20 hover:border-redcustom-500 hover:bg-white/5 transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-motorcycle text-redcustom-400"></i>
+                    <span>Ver Serviços de Carros & Motos</span>
+                </a>
+            </div>
+
+            <!-- Destaques Rápidos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-10 border-t border-white/10 text-left">
+                <div class="p-4 rounded-xl bg-darkbase-900/60 border border-white/5">
+                    <div class="text-redcustom-400 font-tech text-2xl sm:text-3xl font-black">+480</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Carros Customizados</div>
+                </div>
+                <div class="p-4 rounded-xl bg-darkbase-900/60 border border-white/5">
+                    <div class="text-redcustom-400 font-tech text-2xl sm:text-3xl font-black">+320</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Motos & Tanques Especiais</div>
+                </div>
+                <div class="p-4 rounded-xl bg-darkbase-900/60 border border-white/5">
+                    <div class="text-goldcustom-400 font-tech text-2xl sm:text-3xl font-black">100%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Couro Legítimo & Cabines</div>
+                </div>
+                <div class="p-4 rounded-xl bg-darkbase-900/60 border border-white/5">
+                    <div class="text-goldcustom-400 font-tech text-2xl sm:text-3xl font-black">Hangar</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Divisão Aeronáutica Inhumas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOCO PRINCIPAL: CUSTOMIZAÇÃO DE CARROS E MOTOS -->
+    <section id="carros-motos" class="py-24 px-4 bg-darkbase-900 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-redcustom-400 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-wrench"></i> O Coração da Albino Custom Detail
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-sans font-black text-white mt-2">Especialistas em Carros & Motos</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-redcustom-500 to-transparent mx-auto mt-4"></div>
+                <p class="text-gray-400 text-sm sm:text-base mt-4">
+                    Da restauração estética ao projeto ousado de personalização completa. Trabalhamos com processos automotivos de ponta em Inhumas.
+                </p>
+            </div>
+
+            <!-- Grid Carros e Motos em Destaque -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                
+                <!-- CARD GRANDE: CARROS -->
+                <div class="glass-dark rounded-3xl p-8 sm:p-10 border-glow-red relative flex flex-col justify-between group overflow-hidden">
+                    <div class="absolute -right-16 -top-16 w-52 h-52 bg-redcustom-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-redcustom-500/10 border border-redcustom-500/40 flex items-center justify-center text-redcustom-400 text-2xl group-hover:scale-110 group-hover:bg-redcustom-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-car-tunnel"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-darkbase-800 text-[11px] font-tech text-redcustom-400 border border-redcustom-500/30">AUTOMOTIVE DIVISION</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-white mb-4">Customização e Estética de Carros</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Para superesportivos, SUVs, picapes e clássicos. Do detalhamento minucioso ao envelopamento automotivo e pintura personalizada.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300 mb-8">
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Envelopamento PPF e Vinil Custom
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Vitrificação Cerâmica & Grafeno 9H
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Pinturas Especiais: Candy, Flake e Camaleão
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Personalização de Rodas, Pinças & Chrome Delete
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="setVehicleAndGo('carro')" class="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-wider bg-white/5 hover:bg-redcustom-500 hover:text-white text-redcustom-400 transition-all border border-redcustom-500/30 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-car-side"></i> Orçar Customização de Carro
+                    </button>
+                </div>
+
+                <!-- CARD GRANDE: MOTOS -->
+                <div class="glass-dark rounded-3xl p-8 sm:p-10 border-glow-red relative flex flex-col justify-between group overflow-hidden">
+                    <div class="absolute -right-16 -top-16 w-52 h-52 bg-redcustom-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-redcustom-500/10 border border-redcustom-500/40 flex items-center justify-center text-redcustom-400 text-2xl group-hover:scale-110 group-hover:bg-redcustom-500 group-hover:text-white transition-all">
+                                <i class="fa-solid fa-motorcycle"></i>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-darkbase-800 text-[11px] font-tech text-redcustom-400 border border-redcustom-500/30">MOTO ATELIER</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-black text-white mb-4">Customização e Arte em Motocicletas</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Estúdio especializado em café racers, Harley-Davidson, big trails e esportivas. Pintura aerográfica de tanques, carenagens e proteção de motor.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-300 mb-8">
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Pintura de Tanque e Carenagens sob encomenda
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Proteção Térmica e Cerâmica para Escapes
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Selas e Bancos em Couro Personalizados
+                            </div>
+                            <div class="flex items-center gap-2 p-2.5 rounded-lg bg-darkbase-800/60 border border-white/5">
+                                <i class="fa-solid fa-check text-redcustom-500"></i> Polimento de Cromados e Pintura Eletrostática
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="setVehicleAndGo('moto')" class="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-wider bg-white/5 hover:bg-redcustom-500 hover:text-white text-redcustom-400 transition-all border border-redcustom-500/30 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-motorcycle"></i> Orçar Customização de Moto
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMPLEMENTAR DEDICADA: COURO & AVIAÇÃO -->
+    <section id="couro-aero" class="py-24 px-4 carbon-bg relative border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-goldcustom-400 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gem"></i> Acabamentos Nobres & Engenharia
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-sans font-black text-white mt-2">Pintura em Couro & Divisão Aeronáutica</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-goldcustom-500 to-transparent mx-auto mt-4"></div>
+                <p class="text-gray-400 text-sm sm:text-base mt-4">
+                    Mantemos setores técnicos de alta exigência com processos regulamentados para restauração de couro nobre e repintura de aeronaves civis e executivas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Módulo Couro -->
+                <div class="glass-dark p-8 rounded-3xl border border-goldcustom-500/30 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-goldcustom-500/10 border border-goldcustom-500/40 flex items-center justify-center text-goldcustom-400 text-xl mb-6">
+                            <i class="fa-solid fa-couch"></i>
+                        </div>
+                        <span class="text-[10px] font-tech text-goldcustom-400 uppercase tracking-widest">INTERIORES DE LUXO</span>
+                        <h3 class="text-2xl font-black text-white mt-1 mb-3">Pintura & Restauração em Couro</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Tratamento botânico e pigmentos importados para bancos automotivos, selas de motocicletas, volante, forro de portas e cabines de aeronaves.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Troca integral de cor (Caramelo, Preto, Conhaque, Vermelho Terracota)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Eliminação de rachaduras, trincas e marcas de atrito</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Selamento térmico anti-raios UV e toque aveludado original</li>
+                        </ul>
+                    </div>
+                    <button onclick="setVehicleAndGo('couro')" class="w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-goldcustom-500/10 hover:bg-goldcustom-500 hover:text-darkbase-950 text-goldcustom-400 transition-all border border-goldcustom-500/30">
+                        Orçar Restauração em Couro
+                    </button>
+                </div>
+
+                <!-- Módulo Aviação -->
+                <div class="glass-dark p-8 rounded-3xl border border-goldcustom-500/30 relative flex flex-col justify-between group">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-goldcustom-500/10 border border-goldcustom-500/40 flex items-center justify-center text-goldcustom-400 text-xl mb-6">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <span class="text-[10px] font-tech text-goldcustom-400 uppercase tracking-widest">DIVISÃO ESPECIALIZADA</span>
+                        <h3 class="text-2xl font-black text-white mt-1 mb-3">Pintura & Estética Aeronáutica</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Infraestrutura preparada para pintura de monomotores, turboélices, helicópteros e jatos. Verniz aeroespacial resistente a variações térmicas extremas (-50°C a +70°C).
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Decapagem química ecológica e aplicação de Alodine anticorrosivo</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Pintura de esquemas personalizados e faixas estilizadas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldcustom-400"></i> Balanceamento de superfícies móveis e apoio para traslado na região</li>
+                        </ul>
+                    </div>
+                    <button onclick="setVehicleAndGo('aeronave')" class="w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider bg-goldcustom-500/10 hover:bg-goldcustom-500 hover:text-darkbase-950 text-goldcustom-400 transition-all border border-goldcustom-500/30">
+                        Orçar Pintura Aeronáutica
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER ANTES E DEPOIS INTERATIVO -->
+    <section id="comparativo" class="py-24 px-4 bg-darkbase-950 relative border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-redcustom-400">Resultado Comprovado</span>
+                <h2 class="text-3xl sm:text-4xl font-sans font-black text-white mt-2">Arraste para Ver o Antes & Depois</h2>
+                <p class="text-gray-400 text-sm mt-3">
+                    Compare a diferença de uma pintura danificada por microrriscos e desgaste para o acabamento espelhado Albino Custom Detail.
+                </p>
+
+                <!-- Botões para trocar o cenário do slider -->
+                <div class="inline-flex p-1 rounded-xl bg-darkbase-850 border border-white/10 mt-6 gap-1">
+                    <button id="btn-scene-car" onclick="changeCompareScene('car')" class="px-4 py-2 text-xs font-bold rounded-lg transition-all bg-redcustom-500 text-white">
+                        Carro: Pintura Espelhada
+                    </button>
+                    <button id="btn-scene-moto" onclick="changeCompareScene('moto')" class="px-4 py-2 text-xs font-bold rounded-lg text-gray-300 hover:text-white transition-all">
+                        Moto: Tanque Custom
+                    </button>
+                    <button id="btn-scene-leather" onclick="changeCompareScene('leather')" class="px-4 py-2 text-xs font-bold rounded-lg text-gray-300 hover:text-white transition-all">
+                        Couro: Restauração
+                    </button>
+                </div>
+            </div>
+
+            <!-- Moldura do Slider -->
+            <div class="relative max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-redcustom-500/40 comparison-wrapper aspect-[16/9]" id="compare-container">
+                
+                <!-- Camada DEPOIS (Fixa atrás) -->
+                <div class="absolute inset-0 w-full h-full">
+                    <div id="compare-after" class="w-full h-full bg-cover bg-center flex items-end p-6" style="background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80');">
+                        <span class="bg-darkbase-950/85 backdrop-blur-md text-emerald-400 border border-emerald-500/40 text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider">
+                            <i class="fa-solid fa-sparkles mr-1"></i> Depois: Albino Custom Detail
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Camada ANTES (Recortada dinamicamente) -->
+                <div id="compare-before-layer" class="absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 border-redcustom-500 shadow-[0_0_20px_rgba(229,9,20,0.8)]">
+                    <div id="compare-before" class="w-full h-full bg-cover bg-center flex items-end p-6 filter grayscale contrast-125 brightness-75" style="background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80'); width: 896px;">
+                        <span class="bg-darkbase-950/85 backdrop-blur-md text-redcustom-400 border border-redcustom-500/40 text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider">
+                            <i class="fa-solid fa-circle-exclamation mr-1"></i> Antes: Opaco e Riscado
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Manipulador (Handle) Central -->
+                <div id="compare-handle" class="absolute top-0 bottom-0 left-1/2 -ml-5 w-10 flex items-center justify-center cursor-ew-resize pointer-events-none">
+                    <div class="w-10 h-10 rounded-full bg-redcustom-500 text-white flex items-center justify-center shadow-2xl border-2 border-white font-bold text-xs">
+                        <i class="fa-solid fa-arrows-left-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-gray-500 mt-4">
+                <i class="fa-solid fa-arrows-left-right text-redcustom-400 mr-1"></i> Arraste horizontalmente no celular ou computador para inspecionar
+            </p>
+        </div>
+    </section>
+
+    <!-- SIMULADOR DINÂMICO DE ORÇAMENTO (WHATSAPP INHUMAS - GO) -->
+    <section id="simulador" class="py-24 px-4 carbon-bg relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-black uppercase tracking-[0.3em] text-redcustom-400">Atendimento Imediato</span>
+                <h2 class="text-3xl sm:text-5xl font-sans font-black text-white mt-2">Simulador de Projeto</h2>
+                <p class="text-gray-400 text-sm mt-3">
+                    Configure os serviços para seu carro, moto, estofamento ou aeronave e receba estimativa com encaminhamento direto para a equipe de Inhumas.
+                </p>
+            </div>
+
+            <div class="glass-dark p-6 sm:p-10 rounded-3xl border-glow-red shadow-2xl">
+                <!-- Passo 1: Categoria do Veículo -->
+                <div class="mb-8">
+                    <label class="block text-xs font-black uppercase tracking-wider text-redcustom-400 mb-3">1. Tipo de Veículo ou Estrutura</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="calc-vehicle" value="carro" checked class="peer sr-only" onchange="runCalculator()">
+                            <div class="p-3.5 rounded-2xl border border-white/10 peer-checked:border-redcustom-500 peer-checked:bg-redcustom-500/15 peer-checked:text-white text-gray-400 hover:border-white/30 transition-all text-center">
+                                <i class="fa-solid fa-car text-2xl mb-1.5 block peer-checked:text-redcustom-400"></i>
+                                <span class="font-bold text-xs text-white block">Carro</span>
+                                <span class="text-[10px] text-gray-400">Esportivo / SUV / Sedan</span>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="calc-vehicle" value="moto" class="peer sr-only" onchange="runCalculator()">
+                            <div class="p-3.5 rounded-2xl border border-white/10 peer-checked:border-redcustom-500 peer-checked:bg-redcustom-500/15 peer-checked:text-white text-gray-400 hover:border-white/30 transition-all text-center">
+                                <i class="fa-solid fa-motorcycle text-2xl mb-1.5 block peer-checked:text-redcustom-400"></i>
+                                <span class="font-bold text-xs text-white block">Moto</span>
+                                <span class="text-[10px] text-gray-400">Custom / Trail / Naked</span>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="calc-vehicle" value="couro" class="peer sr-only" onchange="runCalculator()">
+                            <div class="p-3.5 rounded-2xl border border-white/10 peer-checked:border-goldcustom-500 peer-checked:bg-goldcustom-500/15 peer-checked:text-white text-gray-400 hover:border-white/30 transition-all text-center">
+                                <i class="fa-solid fa-couch text-2xl mb-1.5 block peer-checked:text-goldcustom-400"></i>
+                                <span class="font-bold text-xs text-white block">Couro</span>
+                                <span class="text-[10px] text-gray-400">Bancos / Cabines</span>
+                            </div>
+                        </label>
+
+                        <label class="cursor-pointer">
+                            <input type="radio" name="calc-vehicle" value="aero" class="peer sr-only" onchange="runCalculator()">
+                            <div class="p-3.5 rounded-2xl border border-white/10 peer-checked:border-goldcustom-500 peer-checked:bg-goldcustom-500/15 peer-checked:text-white text-gray-400 hover:border-white/30 transition-all text-center">
+                                <i class="fa-solid fa-plane text-2xl mb-1.5 block peer-checked:text-goldcustom-400"></i>
+                                <span class="font-bold text-xs text-white block">Aeronave</span>
+                                <span class="text-[10px] text-gray-400">Jato / Monomotor</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Seleção de Serviços com Base Dinâmica -->
+                <div class="mb-8">
+                    <label class="block text-xs font-black uppercase tracking-wider text-redcustom-400 mb-3">2. Selecione os Procedimentos</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="services-group">
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-white/10 bg-darkbase-900/60 hover:border-redcustom-500/50 cursor-pointer transition-all">
+                            <input type="checkbox" id="srv-paint" value="3800" checked class="w-4 h-4 accent-redcustom-500 rounded" onchange="runCalculator()">
+                            <div>
+                                <span class="font-bold text-sm text-white block">Pintura Especial / Tanque / Peças</span>
+                                <span class="text-xs text-gray-400">Candy, Flake, verniz de alto sólido e polimento técnico</span>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-white/10 bg-darkbase-900/60 hover:border-redcustom-500/50 cursor-pointer transition-all">
+                            <input type="checkbox" id="srv-ceramic" value="1800" checked class="w-4 h-4 accent-redcustom-500 rounded" onchange="runCalculator()">
+                            <div>
+                                <span class="font-bold text-sm text-white block">Vitrificação Cerâmica / Grafeno 9H</span>
+                                <span class="text-xs text-gray-400">Blindagem contra sol de Goiás, dejetos e microabrasão</span>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-white/10 bg-darkbase-900/60 hover:border-redcustom-500/50 cursor-pointer transition-all">
+                            <input type="checkbox" id="srv-wrap" value="4500" class="w-4 h-4 accent-redcustom-500 rounded" onchange="runCalculator()">
+                            <div>
+                                <span class="font-bold text-sm text-white block">Envelopamento / PPF de Proteção</span>
+                                <span class="text-xs text-gray-400">Proteção contra pedras e mudança exclusiva de cor</span>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-white/10 bg-darkbase-900/60 hover:border-redcustom-500/50 cursor-pointer transition-all">
+                            <input type="checkbox" id="srv-leather" value="2200" class="w-4 h-4 accent-redcustom-500 rounded" onchange="runCalculator()">
+                            <div>
+                                <span class="font-bold text-sm text-white block">Pintura & Restauração em Couro</span>
+                                <span class="text-xs text-gray-400">Recolor, hidratação profunda e selagem anti-atrito</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Passo 3: Identificação do Cliente -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Seu Nome / WhatsApp</label>
+                        <input type="text" id="calc-name" placeholder="Ex: Lucas Mendes" class="w-full bg-darkbase-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-redcustom-500 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Modelo da Máquina (Carro / Moto / Aero)</label>
+                        <input type="text" id="calc-model" placeholder="Ex: Harley Iron 883 / Golf GTI / Cirrus SR22" class="w-full bg-darkbase-900 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-redcustom-500 transition-all">
+                    </div>
+                </div>
+
+                <!-- Card de Estimativa e Disparo WhatsApp -->
+                <div class="p-6 rounded-2xl bg-darkbase-950 border border-redcustom-500/50 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gray-400 block font-semibold">Valor Estimado do Projeto</span>
+                        <div class="text-2xl sm:text-3xl font-tech font-black text-redcustom-400 mt-1" id="calc-display-cost">
+                            R$ 5.600,00*
+                        </div>
+                        <span class="text-[11px] text-gray-500 block mt-1">*Orçamento exato após inspeção física na oficina de Inhumas - GO</span>
+                    </div>
+
+                    <button onclick="dispatchWhatsAppBudget()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest bg-gradient-to-r from-emerald-500 to-green-600 text-white hover:brightness-110 shadow-lg shadow-emerald-500/25 transition-all flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Enviar Projeto no WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE PROJETOS COM FILTROS -->
+    <section id="galeria" class="py-24 px-4 bg-darkbase-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-black uppercase tracking-[0.3em] text-redcustom-400">Portfólio Realizado</span>
+                    <h2 class="text-3xl sm:text-4xl font-sans font-black text-white mt-2">Nossos Projetos em Inhumas</h2>
+                </div>
+
+                <!-- Filtros -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button onclick="applyGalleryFilter('all', this)" class="gallery-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-redcustom-500 text-white">Todos</button>
+                    <button onclick="applyGalleryFilter('carros', this)" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-darkbase-800 text-gray-300 hover:text-white">Carros</button>
+                    <button onclick="applyGalleryFilter('motos', this)" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-darkbase-800 text-gray-300 hover:text-white">Motos</button>
+                    <button onclick="applyGalleryFilter('couro', this)" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-darkbase-800 text-gray-300 hover:text-white">Couro Nobre</button>
+                    <button onclick="applyGalleryFilter('aero', this)" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-darkbase-800 text-gray-300 hover:text-white">Aviação</button>
+                </div>
+            </div>
+
+            <!-- Grid de Itens com Detalhes ao Clicar -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-container">
+                
+                <!-- CARRO 1 -->
+                <div class="item-card carros rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Porsche 911 GT3 - Full Custom', 'Carros', 'Aplicação de película PPF frontal, vitrificação de grafeno 9H, polimento técnico e chrome delete preto brilhante.', 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Porsche Custom em Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-redcustom-400 uppercase tracking-widest">Carro • Superesportivo</span>
+                        <h4 class="text-lg font-bold text-white">Porsche 911 GT3 - Proteção & Brilho</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">PPF regenerativo e vitrificação de alta performance.</p>
+                    </div>
+                </div>
+
+                <!-- MOTO 1 -->
+                <div class="item-card motos rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Custom Bobber Harley - Candy Red', 'Motos', 'Pintura completa de tanque com camadas Candy Red e Flakes metálicos, selamento térmico de escapamento e sela em couro restaurada.', 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80" alt="Moto Custom Harley em Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-redcustom-400 uppercase tracking-widest">Moto • Harley Custom</span>
+                        <h4 class="text-lg font-bold text-white">Bobber Candy Red & Escapes</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">Pintura artesanal e proteção cerâmica de altas temperaturas.</p>
+                    </div>
+                </div>
+
+                <!-- COURO 1 -->
+                <div class="item-card couro rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Restauração de Bancos em Couro Conhaque', 'Couro Nobre', 'Restauração de ranhuras, preenchimento com resina elástica especial e pintura térmica na cor terracota conhaque.', 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Pintura em Couro Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-goldcustom-400 uppercase tracking-widest">Couro • Estofamento</span>
+                        <h4 class="text-lg font-bold text-white">Interior Terracota Nobre</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">Pintura em couro legítimo com proteção UV.</p>
+                    </div>
+                </div>
+
+                <!-- MOTO 2 -->
+                <div class="item-card motos rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Triumph Cafe Racer - Prata Grafite', 'Motos', 'Projeto com tanque escovado, faixas esportivas em vermelho Albino e verniz espelhado de resistência máxima.', 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80" alt="Triumph Cafe Racer Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-redcustom-400 uppercase tracking-widest">Moto • Cafe Racer</span>
+                        <h4 class="text-lg font-bold text-white">Tanque Escovado & Detailing</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">Trabalho artesanal com estética clássica e moderna.</p>
+                    </div>
+                </div>
+
+                <!-- CARRO 2 -->
+                <div class="item-card carros rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Mustang GT - Black Piano & Detailing', 'Carros', 'Correção de verniz de 4 etapas para eliminação total de hologramas e vitrificação de vidros e lataria.', 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Mustang Black Piano Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-redcustom-400 uppercase tracking-widest">Carro • Muscle Car</span>
+                        <h4 class="text-lg font-bold text-white">Mustang GT - Polimento Técnico</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">Reflexo cristalino e selagem de rodas.</p>
+                    </div>
+                </div>
+
+                <!-- AERO 1 -->
+                <div class="item-card aero rounded-2xl overflow-hidden glass-dark border border-white/10 group relative aspect-[4/3] cursor-pointer" onclick="openProjectModal('Beechcraft King Air - Esquema Bicolor', 'Divisão Aeronáutica', 'Remoção química, aplicação de primer aeronáutico e faixas personalizadas com verniz de alta altitude.', 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=800&q=80" alt="Pintura de Avião Inhumas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-darkbase-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-[10px] font-tech text-goldcustom-400 uppercase tracking-widest">Aviação • King Air</span>
+                        <h4 class="text-lg font-bold text-white">Pintura Poliuretano Aeroespacial</h4>
+                        <p class="text-xs text-gray-300 mt-1 line-clamp-1">Trabalho técnico com certificação de peso e balanceamento.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE A OFICINA EM INHUMAS - GO -->
+    <section id="oficina" class="py-24 px-4 carbon-bg relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-redcustom-500/10 border border-redcustom-500/30 text-redcustom-400 text-xs font-tech uppercase mb-4">
+                        <i class="fa-solid fa-location-dot"></i> Base de Operações
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-sans font-black text-white">A Albino Custom Detail em Inhumas - GO</h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-4 mb-6">
+                        Localizada no município de Inhumas, coração do estado de Goiás e conectada diretamente a Goiânia pela rodovia duplicada GO-070. Nossa oficina foi estruturada como um atelier boutique para receber entusiastas de carros, motociclistas exigentes e frotas executivas.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-2xl glass-dark border border-white/5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-redcustom-500/10 text-redcustom-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-spray-can"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Cabine de Pintura Pressurizada com Aquecimento</h4>
+                                <p class="text-xs text-gray-400 mt-1">Ambiente 100% livre de impurezas e controle de umidade para cura perfeita de vernizes automotivos e tintas aeroespaciais.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl glass-dark border border-white/5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-redcustom-500/10 text-redcustom-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Iluminação Hexagonal de Inspeção CRI 98+</h4>
+                                <p class="text-xs text-gray-400 mt-1">Visão óptica sem sombras para eliminar qualquer risco, holograma ou imperfeição em latarias e peças de motos.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl glass-dark border border-white/5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-redcustom-500/10 text-redcustom-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Segurança 24h & Pátio Monitorado</h4>
+                                <p class="text-xs text-gray-400 mt-1">Seu veículo, moto ou componente de alto valor totalmente segurado durante todo o período de customização.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="https://maps.google.com/?q=Inhumas+Goias" target="_blank" class="px-6 py-3.5 rounded-xl bg-redcustom-500 text-white font-black text-xs uppercase tracking-wider flex items-center gap-2 hover:bg-redcustom-600 transition-all">
+                            <i class="fa-solid fa-route"></i>
+                            <span>Abrir no GPS / Google Maps</span>
+                        </a>
+                        <button onclick="copyInhumasAddress()" class="px-6 py-3.5 rounded-xl glass-dark border border-white/20 text-white text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:border-redcustom-400 transition-all">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>Copiar Endereço</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Painel Visual da Oficina & Localização -->
+                <div class="glass-dark p-6 rounded-3xl border border-redcustom-500/30 relative">
+                    <div class="aspect-video w-full rounded-2xl overflow-hidden relative mb-6">
+                        <img src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1000&q=80" alt="Atelier Albino Custom Detail em Inhumas" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbase-950 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 rounded bg-redcustom-500 text-white font-tech text-xs font-bold">OFICINA & SHOWROOM</span>
+                            <h5 class="text-white font-bold text-sm mt-1">Inhumas - GO (GO-070)</h5>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="p-3 bg-darkbase-900 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block">Distância Goiânia</span>
+                            <span class="text-base font-tech font-bold text-redcustom-400">~ 35 minutos</span>
+                        </div>
+                        <div class="p-3 bg-darkbase-900 rounded-xl border border-white/5">
+                            <span class="text-xs text-gray-400 block">Acesso Logístico</span>
+                            <span class="text-base font-tech font-bold text-white">GO-070 Duplicada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER COMPLETO -->
+    <footer class="bg-darkbase-950 border-t border-white/10 pt-16 pb-12 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <!-- Coluna 1: Marca -->
+            <div class="md:col-span-1">
+                <div class="flex items-center space-x-2 mb-3">
+                    <span class="font-tech font-black text-2xl text-white">ALBINO</span>
+                    <span class="font-racing text-3xl text-redcustom-500">CUSTOM DETAIL</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                    Atelier de customização de carros e motos com divisão especializada em restauração de couro nobre e pintura aeronáutica em Inhumas - GO.
+                </p>
+                <div class="flex space-x-3 text-sm">
+                    <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-lg bg-darkbase-800 flex items-center justify-center text-gray-300 hover:text-redcustom-400 hover:bg-darkbase-700 transition-all">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5562999990000" target="_blank" class="w-9 h-9 rounded-lg bg-darkbase-800 flex items-center justify-center text-gray-300 hover:text-emerald-400 hover:bg-darkbase-700 transition-all">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://maps.google.com" target="_blank" class="w-9 h-9 rounded-lg bg-darkbase-800 flex items-center justify-center text-gray-300 hover:text-redcustom-400 hover:bg-darkbase-700 transition-all">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Foco Principal -->
+            <div>
+                <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-4 border-l-2 border-redcustom-500 pl-2">Carros & Motos</h5>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#carros-motos" class="hover:text-redcustom-400 transition-colors">Pintura Candy & Flake</a></li>
+                    <li><a href="#carros-motos" class="hover:text-redcustom-400 transition-colors">Tanques & Carenagens Custom</a></li>
+                    <li><a href="#carros-motos" class="hover:text-redcustom-400 transition-colors">Vitrificação Cerâmica 9H</a></li>
+                    <li><a href="#carros-motos" class="hover:text-redcustom-400 transition-colors">Envelopamento & PPF</a></li>
+                    <li><a href="#carros-motos" class="hover:text-redcustom-400 transition-colors">Chrome Delete & Rodas</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Couro e Aviação -->
+            <div>
+                <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-4 border-l-2 border-goldcustom-500 pl-2">Couro & Aviação</h5>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#couro-aero" class="hover:text-goldcustom-400 transition-colors">Pintura e Troca de Cor Couro</a></li>
+                    <li><a href="#couro-aero" class="hover:text-goldcustom-400 transition-colors">Selas Custom de Motocicletas</a></li>
+                    <li><a href="#couro-aero" class="hover:text-goldcustom-400 transition-colors">Pintura Aeronáutica Completa</a></li>
+                    <li><a href="#couro-aero" class="hover:text-goldcustom-400 transition-colors">Vernizes de Alta Altitude</a></li>
+                    <li><a href="#couro-aero" class="hover:text-goldcustom-400 transition-colors">Interiores Executivos</a></li>
+                </ul>
+            </div>
+
+            <!-- Coluna 4: Localização Inhumas -->
+            <div>
+                <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-4 border-l-2 border-redcustom-500 pl-2">Base em Inhumas</h5>
+                <p class="text-xs text-gray-400 leading-relaxed mb-2">
+                    Rodovia GO-070, Acesso Principal - Inhumas, Goiás.<br>
+                    Atendimento regional: Inhumas, Goiânia, Itauçu, Itaberaí e todo Vale do Araguaia.
+                </p>
+                <span class="text-xs text-redcustom-400 font-bold block mt-3">Telefone / WhatsApp: (62) 99999-0000</span>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 text-center sm:text-left gap-4">
+            <p>&copy; <span id="current-year"></span> Albino Custom Detail. Todos os direitos reservados. Inhumas - GO.</p>
+            <p class="text-[11px]">Especialistas em Carros e Motos | Pintura em Couro & Divisão Aeronáutica</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DETALHES DO PROJETO DA GALERIA -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-dark border border-redcustom-500/50 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="project-modal-box">
+            <div class="relative aspect-video w-full bg-darkbase-900">
+                <img id="modal-img" src="" alt="Projeto Albino Custom" class="w-full h-full object-cover">
+                <button onclick="closeProjectModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-darkbase-950/80 text-white flex items-center justify-center hover:bg-redcustom-500 transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 sm:p-8">
+                <span id="modal-category" class="text-xs font-tech text-redcustom-400 uppercase tracking-widest block mb-1">CATEGORIA</span>
+                <h3 id="modal-title" class="text-2xl font-black text-white mb-3">Título do Projeto</h3>
+                <p id="modal-desc" class="text-sm text-gray-300 leading-relaxed mb-6">Descrição técnica do serviço realizado pela Albino Custom Detail em Inhumas.</p>
+                <div class="flex items-center justify-end gap-3">
+                    <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-gray-300 hover:text-white bg-white/5">Fechar</button>
+                    <a id="modal-wa-link" href="#" target="_blank" class="px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider bg-redcustom-500 text-white flex items-center gap-2 hover:bg-redcustom-600 transition-all">
+                        <i class="fa-brands fa-whatsapp"></i> Quero um projeto assim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5562999990000?text=Ol%C3%A1!%20Gostaria%20de%20um%20atendimento%20na%20Albino%20Custom%20Detail%20em%20Inhumas." target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 hover:shadow-emerald-500/50 transition-all" aria-label="Falar no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-dark border border-redcustom-500/80 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm text-white">
+            <i class="fa-solid fa-circle-check text-redcustom-400 text-lg"></i>
+            <span id="toast-text">Notificação</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: LÓGICA E INTERAÇÕES -->
+    <script>
+        // Atualizar ano
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 1. CANVAS: RASTROS DE VELOCIDADE (SPEED LIGHTS)
+        const canvas = document.getElementById('speed-canvas');
+        const ctx = canvas.getContext('2d');
+        let streaks = [];
+        let mouseX = window.innerWidth / 2;
+
+        function fitCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+            createStreaks();
+        }
+
+        class SpeedStreak {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.length = Math.random() * 80 + 30;
+                this.speed = Math.random() * 6 + 3;
+                this.opacity = Math.random() * 0.45 + 0.1;
+                // Paleta: Vermelho neon Albino, âmbar/dourado e branco puro
+                const pick = Math.random();
+                if (pick > 0.45) this.color = '#e50914';
+                else if (pick > 0.2) this.color = '#ff4d4d';
+                else this.color = '#d4af37';
+                this.size = Math.random() * 1.8 + 0.6;
+            }
+            update() {
+                this.x += this.speed;
+                if (this.x > canvas.width) {
+                    this.x = -this.length;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.lineWidth = this.size;
+                ctx.strokeStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x + this.length, this.y);
+                ctx.stroke();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        function createStreaks() {
+            streaks = [];
+            const qty = Math.min(Math.floor(canvas.width / 12), 120);
+            for (let i = 0; i < qty; i++) {
+                streaks.push(new SpeedStreak());
+            }
+        }
+
+        function renderStreaks() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < streaks.length; i++) {
+                streaks[i].update();
+                streaks[i].draw();
+            }
+            requestAnimationFrame(renderStreaks);
+        }
+
+        window.addEventListener('resize', fitCanvas);
+
+        // 2. SLIDER ANTES E DEPOIS
+        const compareContainer = document.getElementById('compare-container');
+        const compareBeforeLayer = document.getElementById('compare-before-layer');
+        const compareHandle = document.getElementById('compare-handle');
+        const compareBeforeImg = document.getElementById('compare-before');
+        const compareAfterImg = document.getElementById('compare-after');
+        let draggingSlider = false;
+
+        function setSliderPosition(clientX) {
+            const rect = compareContainer.getBoundingClientRect();
+            let pos = ((clientX - rect.left) / rect.width) * 100;
+            if (pos < 0) pos = 0;
+            if (pos > 100) pos = 100;
+
+            compareBeforeLayer.style.width = pos + '%';
+            compareHandle.style.left = pos + '%';
+            compareBeforeImg.style.width = rect.width + 'px';
+        }
+
+        compareContainer.addEventListener('mousedown', () => draggingSlider = true);
+        window.addEventListener('mouseup', () => draggingSlider = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!draggingSlider) return;
+            setSliderPosition(e.clientX);
+        });
+
+        compareContainer.addEventListener('touchstart', () => draggingSlider = true);
+        window.addEventListener('touchend', () => draggingSlider = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!draggingSlider) return;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+        function adjustCompareWidth() {
+            if (compareContainer && compareBeforeImg) {
+                compareBeforeImg.style.width = compareContainer.clientWidth + 'px';
+            }
+        }
+        window.addEventListener('resize', adjustCompareWidth);
+
+        function changeCompareScene(scene) {
+            const btnCar = document.getElementById('btn-scene-car');
+            const btnMoto = document.getElementById('btn-scene-moto');
+            const btnLeather = document.getElementById('btn-scene-leather');
+
+            // Reset classes
+            [btnCar, btnMoto, btnLeather].forEach(btn => {
+                btn.className = 'px-4 py-2 text-xs font-bold rounded-lg text-gray-300 hover:text-white transition-all';
+            });
+
+            if (scene === 'car') {
+                btnCar.className = 'px-4 py-2 text-xs font-bold rounded-lg transition-all bg-redcustom-500 text-white';
+                compareAfterImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')";
+                compareBeforeImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')";
+            } else if (scene === 'moto') {
+                btnMoto.className = 'px-4 py-2 text-xs font-bold rounded-lg transition-all bg-redcustom-500 text-white';
+                compareAfterImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1600&q=80')";
+                compareBeforeImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1600&q=80')";
+            } else if (scene === 'leather') {
+                btnLeather.className = 'px-4 py-2 text-xs font-bold rounded-lg transition-all bg-redcustom-500 text-white';
+                compareAfterImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80')";
+                compareBeforeImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80')";
+            }
+        }
+
+        // 3. SIMULADOR DE ORÇAMENTO
+        function runCalculator() {
+            const vType = document.querySelector('input[name="calc-vehicle"]:checked').value;
+            let mult = 1.0;
+
+            if (vType === 'carro') mult = 1.0;
+            if (vType === 'moto') mult = 0.65;
+            if (vType === 'couro') mult = 0.55;
+            if (vType === 'aero') mult = 3.2;
+
+            const p1 = document.getElementById('srv-paint').checked ? parseFloat(document.getElementById('srv-paint').value) : 0;
+            const p2 = document.getElementById('srv-ceramic').checked ? parseFloat(document.getElementById('srv-ceramic').value) : 0;
+            const p3 = document.getElementById('srv-wrap').checked ? parseFloat(document.getElementById('srv-wrap').value) : 0;
+            const p4 = document.getElementById('srv-leather').checked ? parseFloat(document.getElementById('srv-leather').value) : 0;
+
+            const total = (p1 + p2 + p3 + p4) * mult;
+
+            if (total === 0) {
+                document.getElementById('calc-display-cost').innerText = 'Selecione 1 serviço';
+                return;
+            }
+
+            const formatted = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('calc-display-cost').innerText = `${formatted}*`;
+        }
+
+        function setVehicleAndGo(type) {
+            const radios = document.getElementsByName('calc-vehicle');
+            radios.forEach(r => {
+                if (r.value === type) r.checked = true;
+            });
+            runCalculator();
+            document.getElementById('simulador').scrollIntoView({ behavior: 'smooth' });
+            showToast('Categoria atualizada no simulador!');
+        }
+
+        function dispatchWhatsAppBudget() {
+            const vType = document.querySelector('input[name="calc-vehicle"]:checked').value;
+            const name = document.getElementById('calc-name').value.trim() || 'Cliente';
+            const model = document.getElementById('calc-model').value.trim() || 'Modelo a informar';
+            const val = document.getElementById('calc-display-cost').innerText;
+
+            let chosen = [];
+            if (document.getElementById('srv-paint').checked) chosen.push('Pintura Custom');
+            if (document.getElementById('srv-ceramic').checked) chosen.push('Vitrificação 9H');
+            if (document.getElementById('srv-wrap').checked) chosen.push('Envelopamento/PPF');
+            if (document.getElementById('srv-leather').checked) chosen.push('Pintura em Couro');
+
+            const msg = `*ALBINO CUSTOM DETAIL (INHUMAS - GO)*%0A%0A` +
+                        `*Cliente:* ${encodeURIComponent(name)}%0A` +
+                        `*Veículo / Máquina:* ${encodeURIComponent(model)}%0A` +
+                        `*Segmento:* ${vType.toUpperCase()}%0A` +
+                        `*Serviços:* ${encodeURIComponent(chosen.join(', ') || 'Consultoria Geral')}%0A` +
+                        `*Estimativa Preliminar:* ${encodeURIComponent(val)}%0A%0A` +
+                        `Gostaria de agendar a avaliação na oficina de Inhumas.`;
+
+            // WhatsApp DDD 62 Inhumas
+            window.open(`https://wa.me/5562999990000?text=${msg}`, '_blank');
+        }
+
+        // 4. FILTRO DE GALERIA
+        function applyGalleryFilter(category, btn) {
+            const cards = document.querySelectorAll('.item-card');
+            const btns = document.querySelectorAll('.gallery-btn');
+
+            btns.forEach(b => {
+                b.className = 'gallery-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-darkbase-800 text-gray-300 hover:text-white';
+            });
+            btn.className = 'gallery-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-redcustom-500 text-white';
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. MODAL DE PROJETOS
+        const modal = document.getElementById('project-modal');
+        const modalBox = document.getElementById('project-modal-box');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCat = document.getElementById('modal-category');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalImg = document.getElementById('modal-img');
+        const modalWa = document.getElementById('modal-wa-link');
+
+        function openProjectModal(title, category, desc, imgSrc) {
+            modalTitle.innerText = title;
+            modalCat.innerText = category;
+            modalDesc.innerText = desc;
+            modalImg.src = imgSrc;
+            
+            const msg = `Ol%C3%A1!%20Vi%20o%20projeto%20${encodeURIComponent(title)}%20no%20site%20da%20Albino%20Custom%20Detail%20e%20quero%20um%20or%C3%A7amento%20semelhante.`;
+            modalWa.href = `https://wa.me/5562999990000?text=${msg}`;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalBox.classList.remove('scale-95');
+                modalBox.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeProjectModal() {
+            modal.classList.add('opacity-0');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeProjectModal();
+        });
+
+        // 6. UTILITÁRIOS: TOAST & COPIAR ENDEREÇO
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = text;
+            toast.classList.remove('-translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        function copyInhumasAddress() {
+            const addr = "Rodovia GO-070, Acesso Principal - Albino Custom Detail, Inhumas - GO, CEP 75400-000";
+            const temp = document.createElement("input");
+            document.body.appendChild(temp);
+            temp.value = addr;
+            temp.select();
+            document.execCommand("copy");
+            document.body.removeChild(temp);
+            showToast("Endereço em Inhumas copiado!");
+        }
+
+        // 7. MENU MOBILE
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(l => {
+            l.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // INICIALIZAÇÃO
+        window.onload = function () {
+            fitCanvas();
+            renderStreaks();
+            adjustCompareWidth();
+            runCalculator();
+        };
+    </script>
+</body>
+</html>

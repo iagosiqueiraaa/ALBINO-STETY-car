@@ -24,7 +24,7 @@ function rodarBuild() {
 rodarBuild();
 
 let espera;
-for (const alvo of ['index.html', 'styles', 'public', 'tailwind.config.js']) {
+for (const alvo of ['index.html', 'novo.html', 'styles', 'public', 'tailwind.config.js']) {
     watch(path.join(raiz, alvo), { recursive: true }, () => {
         clearTimeout(espera);
         espera = setTimeout(rodarBuild, 150);
@@ -36,6 +36,8 @@ createServer((req, res) => {
     let arquivo = path.join(dist, caminho);
     if (!arquivo.startsWith(dist)) return res.writeHead(403).end();
     if (existsSync(arquivo) && statSync(arquivo).isDirectory()) arquivo = path.join(arquivo, 'index.html');
+    // Igual ao cleanUrls da Vercel: /novo serve novo.html
+    if (!existsSync(arquivo) && existsSync(`${arquivo}.html`)) arquivo = `${arquivo}.html`;
     if (!existsSync(arquivo)) return res.writeHead(404).end('não encontrado');
     res.writeHead(200, { 'Content-Type': tipos[path.extname(arquivo)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
     createReadStream(arquivo).pipe(res);

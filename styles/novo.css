@@ -853,15 +853,13 @@
         transition-delay: var(--atraso, 0ms);
     }
 
-    /* Abertura: antes do script começar, a página está "no escuro" */
-    .abrindo .hero-luz {
-        filter: brightness(0.035);
+    /* Abertura: antes do script começar, só a sala escura. O texto fica com opacidade 0,001
+       (invisível, mas pintado, para o LCP não esperar); cabeçalho e WhatsApp entram depois */
+    .abrindo .h-sobe {
+        opacity: 0.001;
     }
 
-    .abrindo #topo > div {
-        filter: brightness(0.05);
-    }
-
+    .abrindo #topo,
     .abrindo #whats-flutuante {
         opacity: 0;
     }

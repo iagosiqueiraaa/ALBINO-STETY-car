@@ -902,3 +902,8 @@
     opacity: 0;
     pointer-events: none;
 }
+
+/* A marca gigante do rodapé é decoração: vem do CSS, não é texto da página */
+.rodape-marca::before {
+    content: "Albino";
+}
